@@ -8,7 +8,7 @@
 -->
 <Context>
 	<Resource type="javax.sql.DataSource" name="jdbc/mifosx-mpesa"
-		driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/mifosx-mpesa"
-		username="root" password="Cflx_Caritas01" validationQuery="select 1" maxActive="10"
+		driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/caritas"
+		username="root" password="mysql" validationQuery="select 1" maxActive="10"
 		maxIdle="4" />
 </Context>

@@ -69,5 +69,6 @@ configurations.all {
                 it.useVersion '7.0.63'
             }
         }
+		 force 'xml-apis:xml-apis:1.4.01'
     }
 }

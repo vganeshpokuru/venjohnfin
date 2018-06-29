@@ -9,63 +9,78 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="m_ext_txn")
+@Table(name = "mpesa_recieved_txn_details")
 public class Mpesa {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	@Column(name="ipn_id")
-	private Long ipnId;
-	
-	@Column(name="orig")
+
+	@Column(name = "ipn_id")
+	private String ipnId;
+
+	@Column(name = "orig")
 	private String origin;
-	
-	@Column(name="dest")
+
+	@Column(name = "dest")
 	private String destination;
-	
-	@Column(name="client_id")
+
+	@Column(name = "client_id")
 	private Long clientId;
 
-	@Column(name="time_stamp")
+	@Column(name = "client_name")
+	private String clientName;
+
+	@Column(name = "client_external_id")
+	private String clientExternalId;
+
+	@Column(name = "time_stamp")
 	private String timeStamp;
-	
-	@Column(name="text")
+
+	@Column(name = "text")
 	private String testMessage;
-	
-	@Column(name="mpesauser")
+
+	@Column(name = "mpesauser")
 	private String user;
-	
-	@Column(name="mpesapassword")
+
+	@Column(name = "mpesapassword")
 	private String password;
 
-	@Column(name="mpesa_transaction_code")
+	@Column(name = "mpesa_transaction_code")
 	private String transactionCode;
-	
-	@Column(name="mpesa_msisdn")
+
+	@Column(name = "mpesa_msisdn")
 	private String mobileNo;
-	
-	@Column(name="mpesa_account_name")
+
+	@Column(name = "mpesa_account_name")
 	private String accountName;
-	
-	@Column(name="mpesa_trx_date")
+
+	@Column(name = "mpesa_trx_date")
+	@Temporal(TemporalType.DATE)
 	private Date transactionDate;
-	
-	@Column(name="mpesa_trx_time")
+
+	@Column(name = "mpesa_trx_time")
 	private String transactionTime;
-	
-	@Column(name="mpesa_amount")
+
+	@Column(name = "mpesa_amount")
 	private BigDecimal transactionAmount;
-	
-	@Column(name="mpesa_sender")
+
+	@Column(name = "mpesa_sender")
 	private String sender;
-	
-	@Column(name="status")
+
+	@Column(name = "mpesa_trx_type")
+	private String type;
+
+	@Column(name = "office_Id")
+	private Long officeId;
+
+	@Column(name = "status")
 	private String status;
-	
+
 	public Long getId() {
 		return this.id;
 	}
@@ -74,11 +89,11 @@ public class Mpesa {
 		this.id = id;
 	}
 
-	public Long getIpnId() {
+	public String getIpnId() {
 		return this.ipnId;
 	}
 
-	public void setIpnId(Long ipnId) {
+	public void setIpnId(String ipnId) {
 		this.ipnId = ipnId;
 	}
 
@@ -129,7 +144,7 @@ public class Mpesa {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public String getTransactionCode() {
 		return this.transactionCode;
 	}
@@ -158,8 +173,8 @@ public class Mpesa {
 		return this.transactionDate;
 	}
 
-	public void setTransactionDate(Date transactionDate) {
-		this.transactionDate = transactionDate;
+	public void setTransactionDate(Date txnDate) {
+		this.transactionDate = txnDate;
 	}
 
 	public String getTransactionTime() {
@@ -193,7 +208,7 @@ public class Mpesa {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
+
 	public Long getClientId() {
 		return clientId;
 	}
@@ -202,5 +217,36 @@ public class Mpesa {
 		this.clientId = clientId;
 	}
 
-	
+	public String getClientName() {
+		return clientName;
+	}
+
+	public void setClientName(String clientName) {
+		this.clientName = clientName;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public Long getOfficeId() {
+		return officeId;
+	}
+
+	public void setOfficeId(Long officeId) {
+		this.officeId = officeId;
+	}
+
+	public String getClientExternalId() {
+		return clientExternalId;
+	}
+
+	public void setClientExternalId(String clientExternalId) {
+		this.clientExternalId = clientExternalId;
+	}
+
 }
