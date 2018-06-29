@@ -119,6 +119,7 @@ public class MifosMpesaController {
 
 	}
 
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	@RequestMapping(value = "/getunmappedtransactions", method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity<Collection<Mpesa>> retriveUnmappedTransactions(
 			@QueryParam("officeId") final Long officeId,
