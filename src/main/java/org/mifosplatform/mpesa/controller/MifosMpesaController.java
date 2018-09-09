@@ -19,6 +19,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -60,7 +61,9 @@ public class MifosMpesaController {
 			@QueryParam("mpesa_trx_date") final String mpesa_trx_date,
 			@QueryParam("mpesa_trx_time") final String mpesa_trx_time,
 			@QueryParam("mpesa_amt") final BigDecimal mpesa_amt,
-			@QueryParam("mpesa_sender") final String mpesa_sender) {
+			@QueryParam("mpesa_sender") final String mpesa_sender,
+			@RequestBody final String  body) {
+		System.out.println("Request Body:" + body);
 		System.out.println("mpesa_code: " + mpesa_code);
 		String responseMessage = "";
 		StringBuilder requestMsg = new StringBuilder();
