@@ -45,85 +45,8 @@ public class MifosMpesaController {
 		this.mpesaBridgeService = mpesaBridgeService;
 
 	}
-	
-	@RequestMapping(value = "/incomingmpesa", method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<String> storeTransactionDetailsGet(
-			@QueryParam("id") final String id,
-			@QueryParam("orig") final String orig,
-			@QueryParam("dest") final String dest,
-			@QueryParam("tstamp") final String tstamp,
-			@QueryParam("text") final String text,
-			@QueryParam("user") final String user,
-			@QueryParam("pass") final String pass,
-			@QueryParam("mpesa_code") final String mpesa_code,
-			@QueryParam("mpesa_acc") final String mpesa_acc,
-			@QueryParam("mpesa_msisdn") final String mpesa_msisdn,
-			@QueryParam("mpesa_trx_date") final String mpesa_trx_date,
-			@QueryParam("mpesa_trx_time") final String mpesa_trx_time,
-			@QueryParam("mpesa_amt") final BigDecimal mpesa_amt,
-			@QueryParam("mpesa_sender") final String mpesa_sender,
-			@RequestBody final String  body) {
-		System.out.println("Request Body:" + body);
-		System.out.println("GET Method");
-		System.out.println("mpesa_code: " + mpesa_code);
-		String responseMessage = "";
-		StringBuilder requestMsg = new StringBuilder();
 
-		requestMsg.append(
-				"transaction failed to following requested parameters  : ");
-		requestMsg.append("   id : ");
-		requestMsg.append(id);
-		requestMsg.append(", orig: ");
-		requestMsg.append(orig);
-		requestMsg.append(", dest :");
-		requestMsg.append(dest);
-		requestMsg.append(", tstamp: ");
-		requestMsg.append(tstamp);
-		requestMsg.append(", text :");
-		requestMsg.append(text);
-		requestMsg.append(", user :");
-		requestMsg.append(user);
-		requestMsg.append(", Pass :");
-		requestMsg.append(pass);
-		requestMsg.append(", mpesa_code :");
-		requestMsg.append(mpesa_code);
-		requestMsg.append(", mpesa_acc :");
-		requestMsg.append(mpesa_acc);
-		requestMsg.append(", mpesa_msisdn : ");
-		requestMsg.append(mpesa_msisdn);
-		requestMsg.append(", mpesa_trx_date :");
-		requestMsg.append(mpesa_trx_date);
-		requestMsg.append(", mpesa_trx_time :");
-		requestMsg.append(mpesa_trx_time);
-		requestMsg.append(", mpesa_amt :");
-		requestMsg.append(mpesa_amt);
-		requestMsg.append(", mpesa_sender: ");
-		requestMsg.append(mpesa_sender);
-
-		String request = requestMsg.toString();
-
-		try {
-			Long officeId = (long) 0;
-			responseMessage = this.mpesaBridgeService.storeTransactionDetails(
-					id, orig, dest, tstamp, text, user, pass, mpesa_code,
-					mpesa_acc, mpesa_msisdn, mpesa_trx_date, mpesa_trx_time,
-					mpesa_amt, mpesa_sender, "PaidIn", officeId);
-			if (responseMessage.equalsIgnoreCase(mpesa_code)) {
-				return new ResponseEntity<String>("CONFLICT:" + responseMessage,
-						HttpStatus.CONFLICT);
-			}
-		} catch (Exception e) {
-			// logger.error("Exception " + e);
-
-			logger.error(request, "Error is :" + e);
-			return new ResponseEntity<String>(e.getMessage(),
-					HttpStatus.BAD_REQUEST);
-		}
-		return new ResponseEntity<String>(responseMessage, HttpStatus.OK);
-
-	}
-
-	@RequestMapping(value = "/incomingmpesa", method = RequestMethod.POST)
+	@RequestMapping(value = "/incomingmpesa", method = RequestMethod.POST, consumes = {"application/JSON"})
 	public @ResponseBody ResponseEntity<String> storeTransactionDetails(
 			@QueryParam("id") final String id,
 			@QueryParam("orig") final String orig,
@@ -141,7 +64,6 @@ public class MifosMpesaController {
 			@QueryParam("mpesa_sender") final String mpesa_sender,
 			@RequestBody final String  body) {
 		System.out.println("Request Body:" + body);
-		System.out.println("POST Method");
 		System.out.println("mpesa_code: " + mpesa_code);
 		String responseMessage = "";
 		StringBuilder requestMsg = new StringBuilder();
