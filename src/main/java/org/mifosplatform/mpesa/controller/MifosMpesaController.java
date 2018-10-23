@@ -52,6 +52,7 @@ public class MifosMpesaController {
 	public @ResponseBody ResponseEntity<String> storeTransactionDetails(
 			@RequestBody final JsonObject  body) {
 		StringBuilder requestMsg = new StringBuilder();
+		System.out.println(body+"::::"+body.getClass());
 
 		requestMsg.append(
 				"transaction failed to following requested parameters  : ");
