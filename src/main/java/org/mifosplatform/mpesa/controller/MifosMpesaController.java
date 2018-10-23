@@ -50,11 +50,11 @@ public class MifosMpesaController {
 
 	@RequestMapping(value = "/incomingmpesa", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<String> storeTransactionDetails(
-			@RequestBody final JsonObject  body) {
+			@RequestBody final Object  body) {
 		StringBuilder requestMsg = new StringBuilder();
 		System.out.println(body+"::::"+body.getClass());
 
-		requestMsg.append(
+		/*requestMsg.append(
 				"transaction failed to following requested parameters  : ");
 		requestMsg.append("TransactionType:");
 		requestMsg.append(body.get("TransactionType"));
@@ -79,7 +79,7 @@ public class MifosMpesaController {
 		requestMsg.append("MiddleName:");
 		requestMsg.append(body.get("MiddleName"));
 		requestMsg.append("LastName:");
-		requestMsg.append(body.get("LastName"));
+		requestMsg.append(body.get("LastName"));*/
 
 		String request = requestMsg.toString();
 		System.out.println(requestMsg);
