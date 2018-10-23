@@ -46,7 +46,7 @@ public class MifosMpesaController {
 
 	}
 
-	@RequestMapping(value = "/incomingmpesa", method = RequestMethod.POST, consumes = {"application/JSON"})
+	@RequestMapping(value = "/incomingmpesa", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<String> storeTransactionDetails(
 			@QueryParam("id") final String id,
 			@QueryParam("orig") final String orig,
@@ -62,8 +62,9 @@ public class MifosMpesaController {
 			@QueryParam("mpesa_trx_time") final String mpesa_trx_time,
 			@QueryParam("mpesa_amt") final BigDecimal mpesa_amt,
 			@QueryParam("mpesa_sender") final String mpesa_sender,
-			@RequestBody final String  body) {
+			@RequestBody final Object  body) {
 		System.out.println("Request Body:" + body);
+		System.out.println(body+"::::"+body.toString());
 		System.out.println("mpesa_code: " + mpesa_code);
 		String responseMessage = "";
 		StringBuilder requestMsg = new StringBuilder();
