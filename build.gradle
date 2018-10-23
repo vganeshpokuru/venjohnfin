@@ -8,14 +8,14 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
-apply plugin: 'spring-boot' 
+apply plugin: 'spring-boot'
 apply plugin: 'war'
 
 jar {
@@ -45,8 +45,9 @@ dependencies {
     compile("joda-time:joda-time:2.4")
     compile("net.minidev:json-smart:1.1.1")
     compile("commons-lang:commons-lang:2.3")
+    compile("org.apache.httpcomponents:httpclient:4.0.3")
     compile("com.sun.jersey:jersey-bundle:1.10-b01");
-    testCompile("org.springframework.boot:spring-boot-starter-test") 
+    testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 
 
